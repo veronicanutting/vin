@@ -1,0 +1,24 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
+
+# Setup
+title:            Veronixa
+tagline:          'First website'
+description:      'A first draft of a personal website/art portfolio.'
+url:              https://veronicanutting.github.io
+baseurl:          '/vin'
+
+author:
+  name:           'Veronica Nutting'
+  url:            https://www.linkedin.com/in/veronicanutting/
+
+paginate:         5
+
+plugins:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+
+# Sidebar link settings
+sidebar_home_link:  true
