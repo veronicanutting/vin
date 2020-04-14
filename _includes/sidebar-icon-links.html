@@ -1,22 +1,26 @@
 <nav id="sidebar-icon-links">
+  <a id="email"
+     class="icon" title="Email" aria-label="Email"
+     href="mailto:nuttingv@gmail.com">
+    {% include svg/email.svg %}
+  </a>
+  <a id="linkedin-link"
+     class="icon" title="Linkedin" aria-label="Linkedin"
+     href="https://www.linkedin.com/in/veronicanutting/">
+    {% include svg/linkedin.svg %}
+  </a>
+  <a id="github-link"
+     class="icon" title="Github" aria-label="Github"
+     href="https://github.com/veronicanutting">
+    {% include svg/github.svg %}
+  </a>
   {% if site.hydeout.repo %}
     <a id="github-link"
        class="icon" title="Github Project" aria-label="Github Project"
        href="{{ site.hydeout.repo }}">
       {% include svg/github.svg %}
     </a>
-    <a id="github-download-link"
-       class="icon" title="Download" aria-label="Download"
-       href="{{ site.hydeout.repo }}/archive/v{{ site.hydeout.version }}.zip">
-      {% include svg/download.svg %}
-    </a>
   {% endif %}
-
-  <a id="subscribe-link"
-     class="icon" title="Subscribe" aria-label="Subscribe"
-     href="{{ site.feed.path | default: 'feed.xml' | relative_url }}">
-    {% include svg/feed.svg %}
-  </a>
 
   {% comment %}
     Check if we have tag or search pages page active before linking to it.

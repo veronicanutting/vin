@@ -1,10 +1,58 @@
 ---
 layout: page
-title: drawings
+title: art projects!
 sidebar_link: true
-sidebar_sort_order: 2
+sidebar_sort_order: 3
 ---
+<!-- Code adapted from Emily Hong: https://github.com/ehhong/ehhong.github.io/blob/master/art.html -->
+<h3>Here are some things I've done during my most recent art attacks:</h3>
 
-<h3>Art coming soon!</h3>
+{% assign col1 = "" %}
+{% assign col2 = "" %}
 
-Need to investigate how to best display big files!
+{% for image in site.static_files %}
+    {% if image.path contains 'art/' %}
+        <!-- get image path -->
+        {% assign imagepath = image.path | split: "/" %}
+        <!-- get image name from image path -->
+        {% for subpath in imagepath %}
+            {% if forloop.index0 == 3 %}
+                {% assign imagename = subpath | replace: "-", " " | replace: ".png", "" | replace: ".jpg", "" %}
+                {% capture url %}img={{ subpath | uri_escape }}{% endcapture %}
+            {% endif %}
+        {% endfor %}
+
+        {% capture img_display %}
+            <a class="art-image" href="image?{{ url }}">
+                <div class="img-wrapper" title="{{ imagename }}">
+                    <!-- somthing going on here because had to change from img src="{{image.path}}"-->
+                    {% assign test = image.path | replace: "/assets/", "assets/" %}
+                    <img src="{{ test }}" alt="{{ imagename }}"
+
+                </div>
+            </a>
+        {% endcapture %}
+
+        <!-- alternate adding to col1 and col2 -->
+        {% capture u %}{% cycle 'odd', 'even' %}{% endcapture %}
+        {% if imagename == "lunchbox moment" %}
+            {% assign lunchbox_moment = img_display %}
+        {% elsif u == 'even' %}
+            {% assign col1 = col1 | append: img_display %}
+        {% else %}
+            {% assign col2 = col2 | append: img_display %}
+        {% endif %}
+
+    {% endif %}
+{% endfor %}
+
+<div class="row">
+    <div class="column">
+      * debugging: column 1 should start here *
+        {{ col2 }}
+    </div>
+    <div class="column">
+      * debugging: column 2 should start here *
+        {{ col1 }}
+    </div>
+</div>

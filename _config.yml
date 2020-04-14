@@ -3,7 +3,7 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Setup
-title:            veronica nutting
+title:            home
 tagline:          'veronica nutting'
 description:      'my personal website'
 url:              https://veronicanutting.github.io

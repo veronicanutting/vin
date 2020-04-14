@@ -27,3 +27,9 @@ To Do's
 # 4/13/20
 
 Hello! I am back. Newest thought it I may switch and separate art portfolio and personal website.
+
+# early hours of 4/13/20
+
+Yes, will keep art portfolio separate. Have gone through and made major changes to website. No updates on Google Analytics and custom domain (totally fine). Also might sit through to learn about posts and tags on hydeout but not necessary I think.
+
+Now going to try to do a bit of art portfolio building (on this site).

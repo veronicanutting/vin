@@ -1,0 +1,134 @@
+---
+# Use a comment to ensure Jekyll reads the file to be transformed into CSS later
+# only main files contain this front matter, not partials.
+---
+
+
+// Adapted from Emily Hong's: https://github.com/ehhong/ehhong.github.io/blob/master/_sass/hydeout/_custom.scss
+
+// photo grid test
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  text-align: center;
+  flex: 50%;
+  max-width: 50%;
+  padding: 0 16px 0 0;
+}
+
+// art image
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 50%;
+  border-radius: 0;
+}
+
+// hover behavior
+a.art-image {
+        display: block;
+
+        &:hover {
+            .img-wrapper {
+                &:before {
+                    opacity: 1;
+                }
+                &:after {
+                    opacity: .45;
+                }
+            }
+        }
+}
+.img-wrapper {
+    position: relative;
+
+    &:before {
+        // text styling
+        content: attr(title);
+        @extend h3;
+        margin: 0;
+        text-align: center;
+        font-style: italic;
+        color: #FFF;
+        // hover box
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        -webkit-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        z-index: 2;
+    }
+
+    &:after {
+        background: #000;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        -webkit-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        z-index: 1;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+// styling for contact.html
+.profile {
+  @extend img;
+  margin: 0 1em;
+  max-height: 250px;
+  max-width: auto;
+}
+
+.box {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  justify-content: center;
+  @media (min-width: $large-breakpoint) {
+    justify-content: left;
+  }
+}
+
+.textbox {
+  @media (min-width: $large-breakpoint) {
+    max-width: 28vw;
+  }
+}
+
+// styling for sidebar logo (nametag photo)
+
+.sidebarlogo {
+  @extend img;
+  @media (max-width: $large-breakpoint) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 28vh;
+  }
+}
+
+.page-title {
+  @media (max-width: $large-breakpoint) {
+    text-align: center;
+  }
+}
