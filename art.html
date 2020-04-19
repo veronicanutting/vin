@@ -4,9 +4,9 @@ title: art projects!
 sidebar_link: true
 sidebar_sort_order: 3
 ---
-<!-- Code adapted from Emily Hong: https://github.com/ehhong/ehhong.github.io/blob/master/art.html -->
-<h3>Here are some things I've done during my most recent art attacks:</h3>
+<h3>a mix of mediums, styles, and subjects</h3>
 
+<!-- Code adapted from Emily Hong: https://github.com/ehhong/ehhong.github.io/blob/master/art.html -->
 {% assign col1 = "" %}
 {% assign col2 = "" %}
 
@@ -26,18 +26,15 @@ sidebar_sort_order: 3
             <a class="art-image" href="image?{{ url }}">
                 <div class="img-wrapper" title="{{ imagename }}">
                     <!-- somthing going on here because had to change from img src="{{image.path}}"-->
-                    {% assign test = image.path | replace: "/assets/", "assets/" %}
-                    <img src="{{ test }}" alt="{{ imagename }}"
-
+                    {% assign newpath = image.path | replace: "/assets/", "assets/" %}
+                    <img src="{{ newpath }}" alt="{{ imagename }}">
                 </div>
             </a>
         {% endcapture %}
 
         <!-- alternate adding to col1 and col2 -->
         {% capture u %}{% cycle 'odd', 'even' %}{% endcapture %}
-        {% if imagename == "lunchbox moment" %}
-            {% assign lunchbox_moment = img_display %}
-        {% elsif u == 'even' %}
+        {% if u == 'even' %}
             {% assign col1 = col1 | append: img_display %}
         {% else %}
             {% assign col2 = col2 | append: img_display %}
@@ -46,13 +43,19 @@ sidebar_sort_order: 3
     {% endif %}
 {% endfor %}
 
+
 <div class="row">
     <div class="column">
-      * debugging: column 1 should start here *
         {{ col2 }}
     </div>
     <div class="column">
-      * debugging: column 2 should start here *
         {{ col1 }}
     </div>
 </div>
+
+<a class="art-image" href="image?img=borges.png">
+    <div class="img-wrapper" title="borges and algorithms">
+      <img src="assets/borges.png" alt="borges and algorithms">
+    </div>
+</a>
+<i>Borges and Binary Search watch as sorting algorithms sort Borges' library.</i>

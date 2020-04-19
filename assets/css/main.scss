@@ -8,3 +8,97 @@
 //$sidebar-sticky: true;
 
 @import "hydeout";
+
+// https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+}
+.column {
+  flex: 50%;
+  max-width: 50%;
+  padding: 0 16px 0 0; // should this be 0 16px 0 0 type?
+}
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%; // do i need a border-radius
+}
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+
+// https://css-tricks.com/fluid-width-video/
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+// From Emily Hong's: https://github.com/ehhong/ehhong.github.io/blob/master/_sass/hydeout/_custom.scss
+// hover behavior
+a.art-image {
+        display: block;
+
+        &:hover {
+            .img-wrapper {
+                &:before {
+                    opacity: 1;
+                }
+                &:after {
+                    opacity: .45;
+                }
+            }
+        }
+}
+.img-wrapper {
+    position: relative;
+
+    &:before {
+        // text styling
+        content: attr(title);
+        @extend h3;
+        margin: 0;
+        text-align: center;
+        font-style: italic;
+        color: #FFF;
+        // hover box
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        -webkit-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        z-index: 2;
+    }
+
+    &:after {
+        background: #000;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        -webkit-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        z-index: 1;
+    }
+}
