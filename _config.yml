@@ -7,7 +7,7 @@ title:            veronica nutting
 tagline:          'veronica nutting'
 description:      'my personal website'
 url:              https://veronicanutting.github.io
-baseurl:          '/vin'
+baseurl:          '/me'
 
 author:
   name:           'Veronica Nutting'
