@@ -23,10 +23,10 @@ sidebar_sort_order: 3
         {% endfor %}
 
         {% capture img_display %}
-            <a class="art-image" href="image?{{ url }}">
+            <a class="art-image" href="assets/art/{{ url }}">
                 <div class="img-wrapper" title="{{ imagename }}">
                     <!-- somthing going on here because had to change from img src="{{image.path}}"-->                 
-                    {% assign newpath = image.path | replace: "/assets/", "assets/art/" %}-->
+                    {% assign newpath = image.path | replace: "/assets/", "assets/" %}-->
                     <img src="{{ newpath }}" alt="{{ imagename }}">
                 </div>
             </a>
