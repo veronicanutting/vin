@@ -1,0 +1,54 @@
+---
+layout: page
+title: art projects!
+sidebar_link: true
+sidebar_sort_order: 4
+---
+<h3>I love making and sending cards! Here are some of my recent favorites</h3>
+
+<!-- Code adapted from Emily Hong: https://github.com/ehhong/ehhong.github.io/blob/master/art.html -->
+{% assign col1 = "" %}
+{% assign col2 = "" %}
+
+{% for image in site.static_files %}
+    {% if image.path contains 'cards/' %}
+        <!-- get image path -->
+        {% assign imagepath = image.path | split: "/" %}
+        <!-- get image name from image path -->
+        {% for subpath in imagepath %}
+            {% if forloop.index0 == 3 %}
+                {% assign imagename = subpath | replace: "-", " " | replace: ".png", "" | replace: ".jpg", "" |replace: ".PNG", "" |replace: ".tiff", ""  %}
+                {% capture url %}img={{ subpath | uri_escape }}{% endcapture %}
+            {% endif %}
+        {% endfor %}
+
+        {% capture img_display %}
+            <a class="art-image" href="/me{{ image.path }}">
+                <div class="img-wrapper" title="{{ imagename }}">
+                    <!-- somthing going on here because had to change from img src="{{image.path}}"-->
+                    {% assign newpath = image.path | replace: "/assets/", "assets/" %}
+                    <img src="{{ newpath }}" alt="{{ imagename }}">
+                </div>
+            </a>
+        {% endcapture %}
+
+        <!-- alternate adding to col1 and col2 -->
+        {% capture u %}{% cycle 'odd', 'even' %}{% endcapture %}
+        {% if u == 'even' %}
+            {% assign col1 = col1 | append: img_display %}
+        {% else %}
+            {% assign col2 = col2 | append: img_display %}
+        {% endif %}
+
+    {% endif %}
+{% endfor %}
+
+
+<div class="row">
+    <div class="column">
+        {{ col2 }}
+    </div>
+    <div class="column">
+        {{ col1 }}
+    </div>
+</div>

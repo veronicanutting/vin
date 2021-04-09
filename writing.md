@@ -2,7 +2,7 @@
 layout: page
 title: writing
 sidebar_link: true
-sidebar_sort_order: 5
+sidebar_sort_order: 6
 ---
 
 ### A smattering of things I've written
